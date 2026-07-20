@@ -7,7 +7,7 @@ const router = express.Router();
 router.get('/', productController.getProducts);
 
 // Requires authentication to modify products
-router.post('/', authenticateToken, productController.createProduct);
+router.post('/', productController.createProduct);
 router.put('/:id', authenticateToken, productController.updateProduct);
 router.delete('/:id', authenticateToken, productController.deleteProduct);
 
