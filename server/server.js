@@ -33,8 +33,8 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 const router = express.Router();
 const allowedOrigins = process.env.NODE_ENV === 'production' 
-    ? [process.env.VITE_PUBLIC_URL, process.env.VITE_PUBLIC_URL?.replace(/\/$/, ''), 'http://localhost:5173'] 
-    : ['http://localhost:5173', process.env.VITE_PUBLIC_URL, process.env.VITE_PUBLIC_URL?.replace(/\/$/, '')];
+    ? [process.env.VITE_PUBLIC_URL, process.env.VITE_PUBLIC_URL?.replace(/\/$/, ''), 'https://elcrucecarniceria.netlify.app', 'http://localhost:5173'] 
+    : ['http://localhost:5173', 'https://elcrucecarniceria.netlify.app', process.env.VITE_PUBLIC_URL, process.env.VITE_PUBLIC_URL?.replace(/\/$/, '')];
 
 app.use(cors({ origin: allowedOrigins, credentials: true }));
 app.use(express.json());
