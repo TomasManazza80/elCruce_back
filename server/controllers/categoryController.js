@@ -34,3 +34,20 @@ export async function createCategory(req, res) {
         res.status(500).json({ message: "Failed to create category" });
     }
 }
+export async function deleteCategory(req, res) {
+    try {
+        const { id } = req.params;
+        const categoryRepo = AppDataSource.getRepository('Category');
+        const category = await categoryRepo.findOne({ where: { id } });
+        
+        if (!category) {
+            return res.status(404).json({ message: "Category not found" });
+        }
+
+        await categoryRepo.remove(category);
+        res.status(200).json({ message: "Category deleted successfully" });
+    } catch (error) {
+        console.error("Error deleting category:", error);
+        res.status(500).json({ message: "Failed to delete category" });
+    }
+}
